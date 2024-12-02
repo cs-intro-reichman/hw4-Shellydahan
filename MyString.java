@@ -23,7 +23,7 @@ public class MyString {
         for(int i=0;i<str.length();i++){
             char b=str.charAt(i);
            if(b>='A'&&b<='Z')
-            // b=b-32;
+             b=(char)(b-32);
             low+=b;  
         }
         
