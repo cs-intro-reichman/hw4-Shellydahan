@@ -5,14 +5,14 @@ public class ArrCharOps {
         String str = "clearly";
         char[] arr1 = {'c','l','e','a','r','l','y'};
         char[] arr2 = {'U','n','d','e','r','s','t', 'o', 'o', 'd'};
-        System.out.println(str);  // Prints the string
-        println(arr1);            // Prints an array of characters
-        System.out.println(charAt(arr1,2));      
-        System.out.println(indexOf(arr1,'l'));  
-        System.out.println(indexOf(arr1,'l',3)); 
-        System.out.println(lastIndexOf(arr1, 'l'));
-        System.out.println(concat(arr1, arr2));
-        System.out.println(subArray(arr2, 2, 9));
+       // System.out.println(str);  // Prints the string
+       // println(arr1);            // Prints an array of characters
+        //System.out.println(charAt(arr1,2));      
+        //System.out.println(indexOf(arr1,'l'));  
+        //System.out.println(indexOf(arr1,'l',3)); 
+        //System.out.println(lastIndexOf(arr1, 'l'));
+        //System.out.println(concat(arr1, arr2));
+        //System.out.println(subArray(arr2, 2, 9));
         System.out.println(compareTo("abcd", "abcd"));
         System.out.println(compareTo("abc", "abcd"));
         System.out.println(compareTo("abw", "abcd"));
@@ -37,6 +37,10 @@ public class ArrCharOps {
      */
     public static char charAt(char[] arr, int index) {
         // Replace the following statement with your code
+        for (int i = 0; i < arr.length; i++){
+            if(i==index)
+               return arr[i];
+        }
         return 0;
     }
 
@@ -45,7 +49,14 @@ public class ArrCharOps {
      */
     public static boolean equals(char[] arr1, char[] arr2) {
         // Replace the following statement with your code
-        return false;
+        boolean ifEquals=true;
+        for (int i = 0; i < arr1.length; i++){
+            for (int j = 0; i < arr2.length; j++){
+                if(arr1[i]!=arr2[j])
+                  ifEquals=false;
+            }
+        }
+        return ifEquals;
     }
 
     /** Returns the index within the given array of the first occurrence of the given character.
@@ -53,14 +64,29 @@ public class ArrCharOps {
      */
     public static int indexOf(char[] arr, char ch) {
         // Replace the following statement with your code
-        return -1;
+        int index=-1;
+        for (int i = 0; i < arr.length; i++){
+            if(arr[i]==ch){
+               index=i; 
+               return index;
+            }
+              
+        }
+        return index;
     }
 
     /** Same as indexOf(char[], char), but starts the search in the given index.
      */
     public static int indexOf(char[] arr, char ch, int fromIndex) {
         // Replace the following statement with your code
-        return -1;
+        int index=-1;
+        for (int i = fromIndex; i < arr.length; i++){
+            if(arr[i]==ch){
+               index=i;
+               return index; 
+            }  
+        }
+        return index;
     }
 
     /** Returns the index within the given arr of the last occurrence of the given character.
@@ -68,14 +94,30 @@ public class ArrCharOps {
      */
     public static int lastIndexOf(char[] arr, char ch) {
         // Replace the following statement with your code
-        return -1;
+        int index=-1;
+        for (int i = arr.length-1; i >= 0; i--){
+            if(arr[i]==ch){
+                 index=i;
+                 return index;
+            }
+        }
+        return index;
     }
 
     /* Returns an array which is the concatanation of the two given arrays.
     */
     public static char[] concat(char[] arr1, char[] arr2) {
         // Replace the following statement with your code
-        return null;
+        char[] concat= new char[arr1.length+arr2.length];
+        int j=0;
+        for (int i = 0; i < arr1.length; i++){
+            concat[i]=arr1[i]; 
+        }
+        for (int i = arr1.length; i < concat.length; i++){
+            concat[i]=arr2[j];
+            j++;
+        }
+        return concat;
     }
 
     /** Returns a new array that can be described as a sub-array of this array.
@@ -85,7 +127,13 @@ public class ArrCharOps {
      */     
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
         // Replace the following statement with your code
-        return null;
+        int j=0;
+        char[] subArr= new char[endIndex-beginIndex];
+        for (int i = beginIndex; i <= endIndex-1 ; i++){
+            subArr[j]=arr[i];
+            j++;
+        }
+        return subArr;
     }
 
      /** Returns a single integer that represents the given array. This integer is sometimes 
@@ -97,7 +145,11 @@ public class ArrCharOps {
      */
     public static long hashCode(char[] arr) {
         // Replace the following statement with your code
-        return 0;
+        long hash=0;
+        for (int i = 0; i <= arr.length-2; i++){
+           hash+= arr[i]* Math.pow(7.0, arr.length-1);
+        }
+        return hash;
     }
 
     /**
@@ -126,7 +178,109 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        // Replace the following statement with your code
-        return 0;
+        if (str1 == null || str2 == null) {
+            return -2; // Invalid input
+        }
+
+        // Compare strings character by character
+        int minLength = Math.min(str1.length(), str2.length());
+
+        for (int i = 0; i < minLength; i++) {
+            char c1 = str1.charAt(i);
+            char c2 = str2.charAt(i);
+
+            if (c1 < c2) {
+                return -1; // str1 is lexicographically smaller
+            } else if (c1 > c2) {
+                return 1; // str1 is lexicographically greater
+            }
+        }
+
+        // If all characters match up to the length of the shorter string
+        if (str1.length() < str2.length()) {
+            return -1; // str1 is lexicographically smaller because it's shorter
+        } else if (str1.length() > str2.length()) {
+            return 1; // str1 is lexicographically greater because it's longer
+        }
+
+        // If both strings are equal in length and content
+        return 0; // str1 and str2 are equal
     }
+
+        // Replace the following statement with your code
+       // if(str1==""||str1=="")
+        //  return -2;
+        //  for(int i=0;i<str1.length();i++){
+          //  for(int j=0;j<str2.length();j++){
+            //    if(str1.charAt(i)!=str2.charAt(j)){
+               //     if(str1.charAt(i)<str2.charAt(j))
+                  //     return -1;
+                  //  if(str1.charAt(i)>str2.charAt(j))
+                   //    return 1;
+            //    }
+          //  }
+        //  }
+        //  boolean subString=true;
+         // int length1= str1.length();
+         // int length2= str1.length();
+         // char s1=' '; char s2=' ';
+        // if(str1.length()<str2.length()){
+        //  for(int i=0;i<str1.length();i++){
+           // for(int j=0;j<str2.length();j++){
+              //    if(length1!=0){
+                //    if(str1.charAt(i)!=str2.charAt(j)){
+                  //    subString=false; 
+                  //    s1= str1.charAt(i); s2=str2.charAt(j);
+                  //  }
+                       
+                   // length1--;
+                //  }
+             //   }
+        //    }
+            //if(subString=true)
+            //return -1;
+       // }
+        //if(subString=false){
+          // if(s1<s2) return -1;
+          // else return 1;
+       // }
+       // else{
+        //    if(str1.length()>str2.length()){
+          //      for(int i=0;i<str2.length();i++){
+            //      for(int j=0;j<str1.length();j++){
+                //        if(length2!=0){
+                  //        if(str2.charAt(i)!=str1.charAt(j)){
+                   //          subString=false;
+                    //         s1= str1.charAt(i); s2=str2.charAt(j);
+                    //      }
+                    //      length2--;
+                    //    }
+                    //  }
+                //  }
+                 // if(subString=true)
+                 // return 1;
+            //  }
+             // else{ 
+               // boolean equals=true;
+               // for(int i=0;i<str2.length();i++){
+                 //   for(int j=0;j<str1.length();j++){
+                       
+                    //    if(str2.charAt(i)!=str1.charAt(j)){
+                        //    equals=false;
+                        //  if(str2.charAt(i)<str1.charAt(j))
+                        //     return 1;
+                         //  else return -1;
+                    //    }
+                  //  }
+               // }
+                //if(equals=true) return 0;
+             // }
+             // if(subString=false)
+              //  if(s1<s2) return -1;
+                //  else return 1;
+
+       // }
+       
+       // return 0;
+   // }
 }
