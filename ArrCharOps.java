@@ -49,15 +49,19 @@ public class ArrCharOps {
      */
     public static boolean equals(char[] arr1, char[] arr2) {
         // Replace the following statement with your code
-        boolean ifEquals=true;
-        for (int i = 0; i < arr1.length; i++){
-            for (int j = 0; j < arr2.length; j++){
-                if(arr1[i]!=arr2[j])
-                  ifEquals=false;
-            }
+        if (arr1.length != arr2.length) {
+            return false;
         }
-        return ifEquals;
+        boolean ifEquals = true;
+    for (int i = 0; i < arr1.length; i++) {
+        if (arr1[i] != arr2[i]) {
+            ifEquals = false;
+            break;
+        }
     }
+    return ifEquals;
+    }
+    
 
     /** Returns the index within the given array of the first occurrence of the given character.
      *  If no such character is found, returns -1.
@@ -108,13 +112,13 @@ public class ArrCharOps {
     */
     public static char[] concat(char[] arr1, char[] arr2) {
         // Replace the following statement with your code
-        char[] concat= new char[arr1.length+arr2.length];
-        int j=0;
-        for (int i = 0; i < arr1.length; i++){
-            concat[i]=arr1[i]; 
+        char[] concat = new char[arr1.length + arr2.length];
+        int j = 0;
+        for (int i = 0; i < arr1.length; i++) {
+            concat[i] = arr1[i]; 
         }
-        for (int i = arr1.length; i < concat.length; i++){
-            concat[i]=arr2[j];
+        for (int i = arr1.length; i < concat.length; i++) {
+            concat[i] = arr2[j];
             j++;
         }
         return concat;
@@ -127,10 +131,10 @@ public class ArrCharOps {
      */     
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
         // Replace the following statement with your code
-        int j=0;
-        char[] subArr= new char[endIndex-beginIndex];
-        for (int i = beginIndex; i <= endIndex-1 ; i++){
-            subArr[j]=arr[i];
+        int j = 0;
+        char[] subArr = new char[endIndex - beginIndex];
+        for (int i = beginIndex; i <= endIndex - 1; i++) {
+            subArr[j] = arr[i];
             j++;
         }
         return subArr;
@@ -145,11 +149,11 @@ public class ArrCharOps {
      */
     public static long hashCode(char[] arr) {
         // Replace the following statement with your code
-        long hash=0;
-        for (int i = 0; i <= arr.length-2; i++){
-           hash+= arr[i]* Math.pow(7.0, arr.length-1);
-        }
-        return hash;
+        long hash = 0;
+    for (int i = 0; i < arr.length; i++) {
+        hash += arr[i] * Math.pow(7.0, (arr.length - 1 - i));
+    }
+    return hash;
     }
 
     /**

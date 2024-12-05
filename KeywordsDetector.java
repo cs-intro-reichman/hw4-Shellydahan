@@ -21,54 +21,59 @@ public class KeywordsDetector {
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
-        String []newSentences= new String [sentences.length];
-        String []newKey= new String [keywords.length];
-        for(int i=0;i< sentences.length; i++){
-            newSentences[i]=lowerCase(sentences[i]);
-        }
-        for(int i=0;i< keywords.length; i++){
-            newKey[i]=lowerCase(keywords[i]);
-        }
-        for(int i=0;i< sentences.length; i++){
-            for(int j=0;j< keywords.length; j++){
-             if(contains(newSentences[i],newKey[j])){
+        String[] newSentences = new String[sentences.length];
+    for (int i = 0; i < sentences.length; i++) {
+        newSentences[i] = lowerCase(sentences[i]);
+    }
+
+    // Convert all keywords to lowercase versions
+    String[] newKey = new String[keywords.length];
+    for (int i = 0; i < keywords.length; i++) {
+        newKey[i] = lowerCase(keywords[i]);
+    }
+
+    // Check each sentence against each keyword
+    for (int i = 0; i < sentences.length; i++) {
+        for (int j = 0; j < keywords.length; j++) {
+            // Use the built-in contains method on the lowercase versions
+            if (newSentences[i].contains(newKey[j])) {
+                // Print the original sentence and break to avoid duplicates
                 System.out.println(sentences[i]);
-             }
+                break;
             }
         }
+    } 
     }
     public static String lowerCase(String str) {
-        // Replace the following statement with your code
-        String low= "";
-        for(int i=0;i<str.length();i++){
-            char b=str.charAt(i);
-           if(b>='A'&&b<='Z')
-             b=(char)(b-32);
-            low+=b;  
+        if (str == null) {
+            return null; 
         }
-        
+        String low = "";
+        for (int i = 0; i < str.length(); i++) {
+            char b = str.charAt(i);
+            if (b >= 'A' && b <= 'Z') {
+                b = (char)(b + 32);
+            }
+            low += b;  
+        }
         return low;
     }
     public static boolean contains(String str1, String str2) {
-        // Replace the following statement with your code
-        if(str1.length()<str2.length())
-           return false;
-        int len=str2.length();
-        int count1=0;  int count2=0; 
-            while(count2 < len && count1 < str1.length()){
-                if(str1.charAt(count1)==str2.charAt(count2)){
-                    count2++; count1++;
-                }
-                else {
-                    count1++;
-                    count2=0;
-                }
+        if (str1.length() < str2.length())
+            return false;
+        int len = str2.length();
+        int count1 = 0;  
+        int count2 = 0; 
+        while (count2 < len && count1 < str1.length()) {
+            if (str1.charAt(count1) == str2.charAt(count2)) {
+                count2++; 
+                count1++;
+            } else {
+                count1++;
+                count2 = 0;
             }
-        if(count2==str2.length())
-           return true;
-        else
-           return false;
+        }
+        return count2 == str2.length();
     }
 }
 

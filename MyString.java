@@ -1,17 +1,17 @@
 public class MyString {
     public static void main(String[] args) {
-       // System.out.println("Testing lowercase:");
-       // System.out.println("UnHappy : " + lowerCase("UnHappy"));
-       // System.out.println("This costs 15 Sheksls : " + lowerCase("This costs 15 Sheksls"));
-       // System.out.println("TLV : " + lowerCase("TLV"));
-       // System.out.println("lowercase : " + lowerCase("lowercase"));
+        System.out.println("Testing lowercase:");
+        System.out.println("UnHappy : " + lowerCase("UnHappy"));
+        System.out.println("This costs 15 Sheksls : " + lowerCase("This costs 15 Sheksls"));
+        System.out.println("TLV : " + lowerCase("TLV"));
+        System.out.println("lowercase : " + lowerCase("lowercase"));
         
-       boolean test1 =contains("baba yaga", "baba");
-       boolean test2 = contains("baba yaga", "");
-       boolean test3 = contains("baba yaga", "John Wick is the baba yaga");
-       boolean test4 = contains("baba yaga", "Yaga");
-       boolean test5 = contains("baba yaga", "babayaga");
-       System.out.println(test1 + " "+ test2+" "+test3+" "+test4+" "+test5);
+      // boolean test1 =contains("baba yaga", "baba");
+      // boolean test2 = contains("baba yaga", "");
+      // boolean test3 = contains("baba yaga", "John Wick is the baba yaga");
+      // boolean test4 = contains("baba yaga", "Yaga");
+      // boolean test5 = contains("baba yaga", "babayaga");
+       //System.out.println(test1 + " "+ test2+" "+test3+" "+test4+" "+test5);
 
        // System.out.println("Testing contains:");
        // System.out.println(contains("unhappy", "happy")); // true
@@ -26,11 +26,14 @@ public class MyString {
     /** Returns the lowercase version of the given string. */
     public static String lowerCase(String str) {
         // Replace the following statement with your code
+        if (str == null) {
+            return null; 
+        }
         String low= "";
         for(int i=0;i<str.length();i++){
             char b=str.charAt(i);
            if(b>='A'&&b<='Z')
-             b=(char)(b-32);
+             b=(char)(b+32);
             low+=b;  
         }
         
