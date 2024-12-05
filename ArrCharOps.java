@@ -51,7 +51,7 @@ public class ArrCharOps {
         // Replace the following statement with your code
         boolean ifEquals=true;
         for (int i = 0; i < arr1.length; i++){
-            for (int j = 0; i < arr2.length; j++){
+            for (int j = 0; j < arr2.length; j++){
                 if(arr1[i]!=arr2[j])
                   ifEquals=false;
             }

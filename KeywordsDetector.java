@@ -27,7 +27,7 @@ public class KeywordsDetector {
         for(int i=0;i< sentences.length; i++){
             newSentences[i]=lowerCase(sentences[i]);
         }
-        for(int i=0;i< sentences.length; i++){
+        for(int i=0;i< keywords.length; i++){
             newKey[i]=lowerCase(keywords[i]);
         }
         for(int i=0;i< sentences.length; i++){
@@ -56,10 +56,9 @@ public class KeywordsDetector {
            return false;
         int len=str2.length();
         int count1=0;  int count2=0; 
-            while(len!=0){
+            while(count2 < len && count1 < str1.length()){
                 if(str1.charAt(count1)==str2.charAt(count2)){
                     count2++; count1++;
-                    len--;
                 }
                 else {
                     count1++;
