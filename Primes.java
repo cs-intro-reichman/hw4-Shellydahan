@@ -10,19 +10,29 @@ public class Primes {
             for(int i = p+1; i < primes.length; i++){
               if(primes[i]==true){
                  if(i%p==0){
-                primes[i]=false;
-               }
+                    primes[i]=false;
+                 }
               }   
             }
           }  
-        p++;
+          p++;
         }
         int primeCount = 0;
         for(int i = 2; i <= n; i++){
             if(primes[i])
                 primeCount++;
         }
-        int totalNumbers = n - 1; // Numbers from 2 to n inclusive
+    
+        
+        System.out.println("Prime numbers up to " + n + ":"); 
+        
+        
+        for (int i = 2; i <= n; i++) { 
+            if (primes[i]) {
+                System.out.println(i); 
+            }
+        }
+        int totalNumbers = n; 
         double percentage = ((double)primeCount / totalNumbers) * 100;
         int primesPercentage = (int)Math.floor(percentage);
         System.out.println("There are " + primeCount + " primes between 2 and " + n + " (" + primesPercentage + "% are primes)");

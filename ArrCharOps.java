@@ -182,33 +182,27 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-        if (str1 == null || str2 == null) {
-            return -2; // Invalid input
-        }
-
-        // Compare strings character by character
         int minLength = Math.min(str1.length(), str2.length());
 
-        for (int i = 0; i < minLength; i++) {
-            char c1 = str1.charAt(i);
-            char c2 = str2.charAt(i);
+    for (int i = 0; i < minLength; i++) {
+        char c1 = str1.charAt(i);
+        char c2 = str2.charAt(i);
 
-            if (c1 < c2) {
-                return -1; // str1 is lexicographically smaller
-            } else if (c1 > c2) {
-                return 1; // str1 is lexicographically greater
-            }
+        if (c1 < c2) {
+            return -1;
+        } else if (c1 > c2) {
+            return 1;
         }
+    }
 
-        // If all characters match up to the length of the shorter string
-        if (str1.length() < str2.length()) {
-            return -1; // str1 is lexicographically smaller because it's shorter
-        } else if (str1.length() > str2.length()) {
-            return 1; // str1 is lexicographically greater because it's longer
-        }
+    // If all matched up to minLength
+    if (str1.length() < str2.length()) {
+        return -1;
+    } else if (str1.length() > str2.length()) {
+        return 1;
+    }
 
-        // If both strings are equal in length and content
-        return 0; // str1 and str2 are equal
+    return 0; // strings are equal
     }
 
         // Replace the following statement with your code
