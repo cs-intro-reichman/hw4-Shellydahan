@@ -184,24 +184,24 @@ public class ArrCharOps {
     public static int compareTo(String str1, String str2) {
         int minLength = Math.min(str1.length(), str2.length());
 
-        for (int i = 0; i < minLength; i++) {
-            char c1 = str1.charAt(i);
-            char c2 = str2.charAt(i);
-    
-            if (c1 < c2) {
-                return -1;
-            } else if (c1 > c2) {
-                return 1;
-            }
-        }
-    
-        if (str1.length() < str2.length()) {
+    for (int i = 0; i < minLength; i++) {
+        char c1 = str1.charAt(i);
+        char c2 = str2.charAt(i);
+
+        if (c1 < c2) {
             return -1;
-        } else if (str1.length() > str2.length()) {
+        } else if (c1 > c2) {
             return 1;
         }
-    
-        return 0;
+    }
+
+    if (str1.length() < str2.length()) {
+        return -1;
+    } else if (str1.length() > str2.length()) {
+        return 1;
+    }
+
+    return 0;
     }
 
         // Replace the following statement with your code
